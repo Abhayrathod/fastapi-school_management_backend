@@ -43,8 +43,8 @@ app.include_router(authentication.router)
 
 @app.get("/")
 def root():
-    return {"message": "Hwllo dost"}
-origins = ["https://www.google.com"]
+    return {"message": "Hello dost"}
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
