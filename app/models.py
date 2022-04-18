@@ -22,7 +22,7 @@ class Students(Base):
     dob = Column(DateTime, nullable=False)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    users_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), nullable = False)
+    users_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'), nullable = False)
 
 class Teacher(Base):
     __tablename__ = "teachers"
@@ -31,7 +31,7 @@ class Teacher(Base):
     dob = Column(DateTime, nullable=False)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    users_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), nullable = False)
+    users_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'), nullable = False)
 
 class Parents(Base):
     __tablename__ = "parents"
@@ -40,8 +40,8 @@ class Parents(Base):
     dob = Column(DateTime, nullable=False)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    users_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), nullable = False)
-    student_id = Column(Integer, ForeignKey("students.id", ondelete=CASCADE), nullable = False)
+    users_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'), nullable = False)
+    student_id = Column(Integer, ForeignKey("students.id", ondelete='CASCADE'), nullable = False)
 
 class Address(Base):
     __tablename__ = "address"
@@ -53,7 +53,7 @@ class Address(Base):
     State = Column(String, nullable=False)
     Country = Column(String, nullable=False)
     pincode = Column(Integer, nullable=False)
-    users_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), nullable = False)
+    users_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'), nullable = False)
 
 class Attendance(Base):
     __tablename__ = "attendance"
@@ -62,14 +62,14 @@ class Attendance(Base):
     total = Column(Integer, nullable = False)
     remarks = Column(String, nullable = False)
     Status = Column(String, nullable = False)
-    students_id = Column(Integer, ForeignKey("students.id", ondelete=CASCADE), nullable = False)
+    students_id = Column(Integer, ForeignKey("students.id", ondelete='CASCADE'), nullable = False)
 
 class Classroom(Base):
     __tablename__ = "classroom"
 
     id = Column(Integer, primary_key = True, nullable = False, autoincrement = True)
     section = Column(String, nullable = False)
-    students_id = Column(Integer, ForeignKey("students.id", ondelete=CASCADE), nullable = False)
+    students_id = Column(Integer, ForeignKey("students.id", ondelete='CASCADE'), nullable = False)
 
 class Course(Base):
     __tablename__ = "course"
@@ -77,7 +77,7 @@ class Course(Base):
     id = Column(Integer, primary_key = True, nullable = False, autoincrement = True)
     name = Column(String, nullable = False)
     description = Column(String, nullable = False)
-    students_id = Column(Integer, ForeignKey("students.id", ondelete=CASCADE), nullable = False)
+    students_id = Column(Integer, ForeignKey("students.id", ondelete='CASCADE'), nullable = False)
 
 class Exam(Base):
     __tablename__ = "exam"
@@ -91,13 +91,13 @@ class Exam_result(Base):
 
     id = Column(Integer, primary_key = True, nullable = False, autoincrement = True)
     marks = Column(Integer, nullable = False)
-    students_id = Column(Integer, ForeignKey("students.id", ondelete=CASCADE), nullable = False)
-    teacher_id = Column(Integer, ForeignKey("teachers.id", ondelete=CASCADE), nullable = False)
+    students_id = Column(Integer, ForeignKey("students.id", ondelete='CASCADE'), nullable = False)
+    teacher_id = Column(Integer, ForeignKey("teachers.id", ondelete='CASCADE'), nullable = False)
 
 class Grade(Base):
     __tablename__ = "grade"
 
     id = Column(Integer, primary_key = True , nullable = False , autoincrement = True)
     g_class = Column(String, nullable = False)
-    students_id = Column(Integer, ForeignKey("students.id", ondelete=CASCADE), nullable = False)
-    exam_result = Column(Integer, ForeignKey("exam_result.id", ondelete=CASCADE), nullable = False)
+    students_id = Column(Integer, ForeignKey("students.id", ondelete='CASCADE'), nullable = False)
+    exam_result = Column(Integer, ForeignKey("exam_result.id", ondelete='CASCADE'), nullable = False)
