@@ -1,10 +1,6 @@
 from fastapi import FastAPI, Response,status,HTTPException,APIRouter
-from psycopg2.extras import RealDictCursor
 from ..schemas import *
-from passlib.context import CryptContext
-import psycopg2
-from psycopg2.extras import RealDictCursor
-from .main import auth
+from ..db_auth import auth
 
 
 

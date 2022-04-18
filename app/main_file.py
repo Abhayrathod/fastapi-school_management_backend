@@ -1,33 +1,14 @@
-from fastapi import FastAPI, Response,status,HTTPException, Depends
-import psycopg2
-from psycopg2.extras import RealDictCursor
+from fastapi import FastAPI
 from .schemas import *
-from random import randrange
 from .routers import authentication, classroom_student, classroom, course, exam, exam_result, grade, parent, users, student
 from . import models
-from .database import engine, get_db
-from sqlalchemy.orm import Session
+from .database import engine
 import json
-from pydantic import BaseSettings
 from fastapi.middleware.cors import CORSMiddleware
 
-models.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)                # This creates tables in database from models
 
 app = FastAPI()
-
-def auth():
-    while True:
-        try:
-            conn= psycopg2.connect(host='localhost', database='my_local_postgres', port='5433',user='postgres', 
-                    password='Abhay66231456',cursor_factory=RealDictCursor)
-            cursor = conn.cursor()
-            print("Database connection is successful")
-            break
-        except Exception as error:
-                print("Connection to database failed")
-                print("Error:",error)
-                time.sleep(2)
-    return cursor,conn
 
 
 app.include_router(classroom_student.router)
@@ -44,6 +25,9 @@ app.include_router(authentication.router)
 @app.get("/")
 def root():
     return {"message": "Hello dost"}
+
+#CORS code below
+
 origins = ["*"]
 
 app.add_middleware(

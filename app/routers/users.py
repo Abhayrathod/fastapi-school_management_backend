@@ -1,10 +1,8 @@
-from sys import prefix
-from urllib import response
 from fastapi import FastAPI, Response,status,HTTPException, Depends, APIRouter
 from .. import utils, oauth2
 from ..schemas import *
 from .. import models
-from ..database import engine, get_db
+from ..database import get_db
 from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/users",tags=["Users"])
@@ -12,15 +10,14 @@ router = APIRouter(prefix="/users",tags=["Users"])
 app = FastAPI()
 
 
-
 @router.get("/")
-def users_list(db: Session = Depends(get_db), user_id: int = Depends(oauth2.get_current_user)):
+def users_list(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
 
     data = db.query(models.User).all()
     return data
 
 @router.get("/{id}",status_code=status.HTTP_200_OK,response_model=User_response)
-def user_id(id:int,db: Session = Depends(get_db), user_id: int = Depends(oauth2.get_current_user)):
+def user_id(id:int,db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
 
     data = db.query(models.User).filter(models.User.user_id==id).first()
     return data

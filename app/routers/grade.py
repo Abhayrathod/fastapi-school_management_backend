@@ -1,8 +1,6 @@
-from sys import prefix
-from xml.sax.saxutils import prepare_input_source
 from fastapi import FastAPI, Response,status,HTTPException,APIRouter
 from ..schemas import *
-from .main import auth
+from ..db_auth import auth
 
 app = FastAPI()
 

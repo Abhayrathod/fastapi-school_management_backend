@@ -1,10 +1,6 @@
-from fastapi import FastAPI, Response,status,HTTPException, Depends
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from random import randrange
-from sqlalchemy.orm import Session
 import time
-
 
 def auth():
     while True:

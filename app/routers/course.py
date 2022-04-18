@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Response,status,HTTPException,APIRouter
 from ..schemas import *
-from .main import auth
+from ..db_auth import auth
 
 
 router = APIRouter(prefix="/course",tags=["Course"])
