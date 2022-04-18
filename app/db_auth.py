@@ -5,7 +5,7 @@ import time
 def auth():
     while True:
         try:
-            conn= psycopg2.connect(host='localhost', database='my_local_postgres', port='5433',user='postgres', 
+            conn= psycopg2.connect(host='localhost', database='my_local_postgres', port='5432',user='postgres', 
                     password='Abhay66231456',cursor_factory=RealDictCursor)
             cursor = conn.cursor()
             print("Database connection is successful")
