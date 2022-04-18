@@ -1,5 +1,3 @@
-from tkinter import CASCADE
-from unittest.util import _MAX_LENGTH
 from sqlalchemy import Column, ForeignKey, Integer, String ,Boolean, DateTime
 from sqlalchemy.sql.expression import null, text
 from .database import Base
