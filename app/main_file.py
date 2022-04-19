@@ -6,7 +6,7 @@ from .database import engine
 import json
 from fastapi.middleware.cors import CORSMiddleware
 
-models.Base.metadata.create_all(bind=engine)                # This creates tables in database from models
+# models.Base.metadata.create_all(bind=engine)                # This creates tables in database from models
 
 app = FastAPI()
 
@@ -24,7 +24,7 @@ app.include_router(authentication.router)
 
 @app.get("/")
 def root():
-    return {"message": "Hello dost"}
+    return {"message": "test connection1234"}
 
 #CORS code below
 
